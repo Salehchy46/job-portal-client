@@ -1,12 +1,14 @@
 import Lottie from "lottie-react";
 import registerLottie from '../../assets/registerLottie.json'
 import { useState } from "react";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
 
-    const [pass, setPass] = useState('');
     const [regError, setRegError] = useState('');
     const [success, setSuccess] = useState('');
+    const [showPass, setShowPass] = useState(false);
 
     const handleRegister = e => {
         e.preventDefault();
@@ -68,7 +70,6 @@ const Register = () => {
                                 <input name="email" type="email" className="input" placeholder="Email" />
                                 <label className="label">Password</label>
                                 <input name="password" type="password" className="input" placeholder="Password" />
-                                <div><a className="link link-hover">Forgot password?</a></div>
                                 <button className="btn btn-neutral mt-4">Regiter</button>
                             </fieldset>
                         </form>
