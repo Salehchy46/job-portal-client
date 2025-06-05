@@ -1,10 +1,13 @@
 import Lottie from "lottie-react";
 import registerLottie from '../../assets/registerLottie.json'
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import AuthContext from "../../context/AuthContext/AuthContext";
 
 const Register = () => {
+
+    const {createUser} = useContext(AuthContext);
 
     const [regError, setRegError] = useState('');
     const [success, setSuccess] = useState('');
@@ -23,6 +26,14 @@ const Register = () => {
 
         const user = { email, password };
         console.log(user);
+
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
 
         setRegError('');
         setSuccess('');
@@ -51,6 +62,8 @@ const Register = () => {
             setSuccess('Password is set successfully.')
             return;
         }
+
+        
     }
 
     return (
