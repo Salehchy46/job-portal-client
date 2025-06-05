@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import AuthContext from '../../context/AuthContext/AuthContext';
+import logo from '../../assets/joblogo.png';
 
 const Navbar = () => {
 
@@ -8,17 +9,19 @@ const Navbar = () => {
 
     const handleLogOut = () => {
         logOut()
-        .then(() => {
-            console.log('Successful Sign Out.');
-        })
-        .catch(error => {
-            console.log('failed to sign out', error);
-        })
+            .then(() => {
+                console.log('Successful Sign Out.');
+            })
+            .catch(error => {
+                console.log('failed to sign out', error);
+            })
     }
 
     const links = <>
-        <li><a>Item 1</a></li>
-        <li><a>Item 3</a></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/'>Home</NavLink></li>
     </>
 
     return (
@@ -34,7 +37,8 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <img className='w-12' src={logo} alt="Logo" />
+                <h3 className="lg:text-3xl text-xl ml-3">Job Portal</h3>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -46,8 +50,8 @@ const Navbar = () => {
                     user ?
                         <>
                             <button onClick={handleLogOut} className='btn'>Log Out</button>
-                        </> 
-                        : 
+                        </>
+                        :
                         <>
                             <button className='btn mr-4'><Link className='' to='/register'>Register</Link></button>
                             <button className='btn'><Link to='/signin'>Sign In</Link></button>

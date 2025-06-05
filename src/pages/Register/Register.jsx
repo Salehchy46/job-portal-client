@@ -11,7 +11,6 @@ const Register = () => {
 
     const [regError, setRegError] = useState('');
     const [success, setSuccess] = useState('');
-    const [showPass, setShowPass] = useState(false);
 
     const handleRegister = e => {
         e.preventDefault();
@@ -22,7 +21,7 @@ const Register = () => {
         const hasUpperCase = /[A-Z]/.test(password);
         const hasLowerCase = /[a-z]/.test(password);
         const hasNumber = /[0-9]/.test(password);
-        const hasSpecial = /[!@#\$%\^&\*]/.test(password);
+        const hasSpecial = /[!@#$%^&*(|/)]/.test(password);
 
         const user = { email, password };
         console.log(user);
