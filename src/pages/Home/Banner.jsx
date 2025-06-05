@@ -1,4 +1,5 @@
 import React from 'react';
+import {easeOut, motion} from 'framer-motion';
 
 const Banner = () => {
     return (
@@ -11,7 +12,10 @@ const Banner = () => {
                     />
                 </div>
                 <div className='flex-1'>
-                    <h1 className="text-5xl font-bold">Box Office News!</h1>
+                    <motion.h1 
+                        animate={{x:50}} 
+                        transition={{duration: 2, delay: 1, ease: easeOut, repeat: Infinity}}
+                        className="text-5xl font-bold">Latest Jobs For You!</motion.h1>
                     <p className="py-6">
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
                         quasi. In deleniti eaque aut repudiandae et a id nisi.
