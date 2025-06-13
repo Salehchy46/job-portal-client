@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import SocialLogin from "../../context/AuthContext/SocialLogin";
 
 const Register = () => {
 
@@ -85,6 +86,8 @@ const Register = () => {
                                 <button className="btn btn-neutral mt-4">Regiter</button>
                             </fieldset>
                         </form>
+                        
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
                 
