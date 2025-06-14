@@ -1,5 +1,5 @@
 import { FaLocationArrow, FaStopwatch } from 'react-icons/fa';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 
 const JobDetails = () => {
 
@@ -54,7 +54,9 @@ const JobDetails = () => {
                         <p className='my-0.5'>Status : {status}</p>
                         <p className='my-0.5'>HR Name : {hr_name}</p>
                         <p className='mb-1'>HR Email : {hr_email}</p>
-                        <button className="btn btn-primary">Apply</button>
+                        <Link to={`/jobApply/${_id}`}>
+                            <button className="btn btn-primary">Apply</button>
+                        </Link>
                     </div>
                 </div>
             </div>
