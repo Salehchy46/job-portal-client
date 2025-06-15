@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 
@@ -7,6 +7,7 @@ const JobApply = () => {
 
     const { id } = useParams();
     const { user } = useAuth();
+    const navigate = useNavigate();
     // console.log(id, user);
 
     const submitJobApplication = e => {
@@ -40,6 +41,7 @@ const JobApply = () => {
                         title: "Job applied successfully!",
                         icon: "success",
                     });
+                    navigate('/myApplications')
                 }
             })
     }
