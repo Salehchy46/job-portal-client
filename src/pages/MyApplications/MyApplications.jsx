@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 
 const MyApplications = () => {
@@ -12,14 +12,16 @@ const MyApplications = () => {
             .then(data => setJobs(data))
     }, [user.email])
 
-    const deleteJobApplication = () => {
-        fetch(`http://localhost:3000/job-application/${user.email}`, {
+    const deleteJobApplication = (id) => {
+        fetch(`http://localhost:3000/job-application/${id}?email=${user.email}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
         .then(data => {
             if(data.deletedCount === 1) {
                 console.log("Application deleted successfully.");
+                const updatedJobs = jobs.filter(job => job._id !== id);
+                setJobs(updatedJobs);
             }
         })
     }
