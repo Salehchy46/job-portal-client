@@ -10,7 +10,7 @@ const PrivateRoute = ({children}) => {
     console.log(location);
 
     if(loading){
-        return <div className='loading loading-dots loading-lg'></div>
+        return <div className='loading loading-infinity loading-xl mx-auto flex justify-center my-[209px]'></div>
     }
 
     if(user){

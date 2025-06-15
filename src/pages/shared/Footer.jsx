@@ -3,14 +3,16 @@ import logo from '../../assets/joblogo.png'
 
 const Footer = () => {
     return (
-        <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
-            <aside>
-                <img src={logo} alt="" />
-                <p className='text-black'>
-                    Job Portal Ltd.
-                    <br />
-                    Providing reliable tech since 1992
-                </p>
+        <footer className="footer flex-col sm:footer-horizontal items-center bg-blue-200 text-base-content p-10">
+            <aside className='text-center'>
+                <div>
+                    <img src={logo} className='mx-auto' alt="" />
+                    <p className='text-black'>
+                        Job Portal Ltd.
+                        <br />
+                        Providing reliable tech since 1992
+                    </p>
+                </div>
             </aside>
             <nav>
                 <h6 className="footer-title">Services</h6>
