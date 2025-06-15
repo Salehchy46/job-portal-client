@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const JobApply = () => {
 
@@ -28,16 +29,19 @@ const JobApply = () => {
         fetch('http://localhost:3000/job-applications', {
             method: 'POST',
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(jobApplication),
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.insertedId){
-                
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Job applied successfully!",
+                        icon: "success",
+                    });
+                }
+            })
     }
 
     return (
