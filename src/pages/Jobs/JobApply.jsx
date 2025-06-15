@@ -17,30 +17,20 @@ const JobApply = () => {
     }
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Apply now!</h1>
-                    <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
-                    </p>
-                </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <div className="card-body">
-                        <form onSubmit={submitJobApplication}>
-                            <fieldset className="fieldset">
-                                <label className="label">LinkedIn URL</label>
-                                <input name='linkedIn' type="url" className="input" placeholder="LinkedIn URL" />
-                                <label className="label">Github URL</label>
-                                <input name='github' type="url" className="input" placeholder="Github URL" />
-                                <label className="label">Resume URL</label>
-                                <input name='resume' type="url" className="input" placeholder="Resume URL" />
-                                <button className="btn btn-neutral mt-4">Apply</button>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
+        <div className="card bg-base-100 w-full shadow-2xl  my-10">
+            <h1 className="text-5xl font-bold text-center">Apply Job now!</h1>
+            <div className="card-body">
+                <form onSubmit={submitJobApplication}>
+                    <fieldset className="fieldset">
+                        <label className="label">LinkedIn URL</label>
+                        <input name='linkedIn' type="url" className="input w-full" placeholder="LinkedIn URL" />
+                        <label className="label">Github URL</label>
+                        <input name='github' type="url" className="input w-full" placeholder="Github URL" />
+                        <label className="label">Resume URL</label>
+                        <input name='resume' type="url" className="input w-full" placeholder="Resume URL" />
+                        <button className="btn btn-neutral mt-4">Apply</button>
+                    </fieldset>
+                </form>
             </div>
         </div>
     );
