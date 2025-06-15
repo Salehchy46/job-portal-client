@@ -12,6 +12,18 @@ const MyApplications = () => {
             .then(data => setJobs(data))
     }, [user.email])
 
+    const deleteJobApplication = () => {
+        fetch(`http://localhost:3000/job-application/${user.email}`, {
+            method: 'DELETE',
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount === 1) {
+                console.log("Application deleted successfully.");
+            }
+        })
+    }
+
     return (
         <div className='my-10'>
             <h2 className="text-3xl font-bold text-center mb-10">My Applications: {jobs.length}</h2>
@@ -51,7 +63,7 @@ const MyApplications = () => {
                             </td>
                             <td>{job.jobType}</td>
                             <th>
-                                <button className="btn btn-ghost btn-xs">delete</button>
+                                <button onClick={() => deleteJobApplication(job._id)} className="btn btn-ghost btn-xs">delete</button>
                             </th>
                         </tr>)
                         }
