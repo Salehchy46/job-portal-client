@@ -13,7 +13,7 @@ const JobsCard = ({ job }) => {
                     <img
                         className='w-16'
                         src={company_logo}
-                        alt="Shoes" />
+                        alt="Logo" />
                 </figure>
                 <div>
                     <h4 className="text-2xl">{company}</h4>

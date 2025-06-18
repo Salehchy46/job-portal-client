@@ -1,19 +1,50 @@
 import React from 'react';
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 
 const AddJob = () => {
+
+    const {user} = useAuth();
 
     const handleAddJob = e => {
         e.preventDefault();
         const form = new FormData(e.target);
         // console.log(form.entries());
-        
+
         const initialData = Object.fromEntries(form.entries());
         console.log(initialData);
-        const {min, max, currency, ...newJob} = initialData;
+        const { min, max, currency, ...newJob } = initialData;
+        // console.log(newJob);
+
+        newJob.salaryRange = { min, max, currency };
+        // console.log(newJob);
+
+        //spliting the multilined text area
+        newJob.requirements = newJob.requirements.split('\n');
+
+        //spliting responsibilities
+        newJob.responsibilites = newJob.responsibilites.split('\n');
         console.log(newJob);
 
-        newJob.salaryRange = {min, max, currency};
-        console.log(newJob);
+        fetch('http://localhost:3000/jobs', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(newJob)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: "top-start",
+                        icon: "success",
+                        title: "Job has been added",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
 
     return (
@@ -34,7 +65,7 @@ const AddJob = () => {
                             <select name='jobType' defaultValue="Pick a job type" className="select select-info w-full">
                                 <option disabled={true}>Pick a job type</option>
                                 <option>Intern</option>
-                                <option>Finance</option>
+                                <option>Full-time</option>
                                 <option>Part-time</option>
                             </select>
                             {/* JOb Category */}
@@ -89,7 +120,7 @@ const AddJob = () => {
                             <input name='hrName' type="text" className="input w-full" placeholder="HR Name" />
                             {/* HR Email */}
                             <label className="label">HR Email</label>
-                            <input name='hrEmail' type="text" className="input w-full" placeholder="HR Email" />
+                            <input defaultValue={user?.email} name='hrEmail' type="text" className="input w-full" placeholder="HR Email" />
                             {/* Company Logo URL */}
                             <label className="label">Company Logo URL</label>
                             <input name='logo_url' type="url" className="input w-full" placeholder="Company Logo URL" />
