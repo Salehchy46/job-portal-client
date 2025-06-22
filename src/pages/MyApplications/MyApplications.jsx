@@ -16,19 +16,37 @@ const MyApplications = () => {
         fetch(`http://localhost:3000/job-application/${id}?email=${user.email}`, {
             method: 'DELETE',
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.deletedCount === 1) {
-                console.log("Application deleted successfully.");
-                const updatedJobs = jobs.filter(job => job._id !== id);
-                setJobs(updatedJobs);
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount === 1) {
+                    console.log("Application deleted successfully.");
+                    const updatedJobs = jobs.filter(job => job._id !== id);
+                    setJobs(updatedJobs);
+                }
+            })
     }
 
     return (
-        <div className='my-10'>
-            <h2 className="text-3xl font-bold text-center mb-10">My Applications: {jobs.length}</h2>
+        <div className=''>
+            <div
+                className="hero min-h-80"
+                style={{
+                    backgroundImage:
+                        "url(https://i.ibb.co/LG8Knh9/download.jpg)",
+                }}
+            >
+                <div className="hero-overlay"></div>
+                <div className="hero-content text-neutral-content text-center">
+                    <div className="">
+                        <h1 className="mb-5 text-5xl font-bold shadow-2xl">Hello! Check your Applications</h1>
+                        <p className="mb-5 shadow-2xl">
+                            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                            quasi. In deleniti eaque aut repudiandae et a id nisi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <h2 className="text-3xl font-bold text-center my-10">My Applications: {jobs.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -44,30 +62,30 @@ const MyApplications = () => {
                         {/* Jobs list */}
                         {
                             jobs.map(job => <tr key={job._id}>
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle h-12 w-12">
-                                            <img
-                                                src={job.company_logo}
-                                                alt="Avatar Tailwind CSS Component" />
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle h-12 w-12">
+                                                <img
+                                                    src={job.company_logo}
+                                                    alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">{job.title}</div>
+                                            <div className="text-sm opacity-50">{job.location}</div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div className="font-bold">{job.title}</div>
-                                        <div className="text-sm opacity-50">{job.location}</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                {job.company}
-                                <br />
-                            </td>
-                            <td>{job.jobType}</td>
-                            <th>
-                                <button onClick={() => deleteJobApplication(job._id)} className="btn btn-ghost btn-xs">delete</button>
-                            </th>
-                        </tr>)
+                                </td>
+                                <td>
+                                    {job.company}
+                                    <br />
+                                </td>
+                                <td>{job.jobType}</td>
+                                <th>
+                                    <button onClick={() => deleteJobApplication(job._id)} className="btn btn-ghost btn-xs">delete</button>
+                                </th>
+                            </tr>)
                         }
                     </tbody>
                 </table>
