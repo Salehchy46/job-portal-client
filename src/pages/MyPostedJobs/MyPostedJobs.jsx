@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
+import { Link } from 'react-router';
 
 const MyPostedJobs = () => {
 
@@ -24,6 +25,8 @@ const MyPostedJobs = () => {
                             <th>logo</th>
                             <th>company</th>
                             <th>Name</th>
+                            <th>Application Count</th>
+                            <th>Applications</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,6 +36,12 @@ const MyPostedJobs = () => {
                                 <td><img src={job.company_logo} className='rounded-full w-10 h-10' alt="logo" /></td>
                                 <td>{job.company}</td>
                                 <td>{job.title}</td>
+                                <td>{job.applicationCount}</td>
+                                <td>
+                                    <Link to={`/viewApplication/${job._id}`}>
+                                        <button className='btn btn-accent'>View Applications</button>
+                                    </Link>
+                                </td>
                             </tr>)
                         }
                     </tbody>
