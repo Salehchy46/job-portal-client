@@ -53,6 +53,7 @@ const MyApplications = () => {
                     <thead>
                         <tr>
                             <th>Title</th>
+                            <th>Deadline</th>
                             <th>Company</th>
                             <th>Job Type</th>
                             <th></th>

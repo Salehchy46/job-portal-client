@@ -13,7 +13,7 @@ const MyPostedJobs = () => {
     }, [user.email])
 
     return (
-        <div>
+        <div className='mb-5'>
             <h2 className="text-3xl font-bold text-center py-10">My Posted Jobs: {jobs.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">
@@ -30,7 +30,7 @@ const MyPostedJobs = () => {
                         {
                             jobs.map((job, index) => <tr key={job._id}>
                                 <th>{index + 1}</th>
-                                <img src={job.company_logo} className='rounded-full w-10 h-10' alt="logo" />
+                                <td><img src={job.company_logo} className='rounded-full w-10 h-10' alt="logo" /></td>
                                 <td>{job.company}</td>
                                 <td>{job.title}</td>
                             </tr>)

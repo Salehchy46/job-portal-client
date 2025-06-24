@@ -14,7 +14,7 @@ const AddJob = () => {
         // console.log(form.entries());
 
         const initialData = Object.fromEntries(form.entries());
-        console.log(initialData);
+        // console.log(initialData);
         const { min, max, currency, ...newJob } = initialData;
         // console.log(newJob);
 
@@ -25,7 +25,7 @@ const AddJob = () => {
         newJob.requirements = newJob.requirements.split('\n');
 
         //spliting responsibilities
-        newJob.responsibilites = newJob.responsibilites.split('\n');
+        newJob.responsibilities = newJob.responsibilities.split('\n');
         console.log(newJob);
 
         fetch('http://localhost:3000/jobs', {
@@ -73,7 +73,7 @@ const AddJob = () => {
                             </select>
                             {/* JOb Category */}
                             <label className="label">Job Category</label>
-                            <select name='jobType' defaultValue="Pick a job category" className="select select-info w-full">
+                            <select name='category' defaultValue="Pick a job category" className="select select-info w-full">
                                 <option disabled={true}>Pick a job category</option>
                                 <option>Engineering</option>
                                 <option>Finance</option>
@@ -116,20 +116,20 @@ const AddJob = () => {
                             {/* Responsibilites */}
                             <fieldset className="fieldset">
                                 <label className="label">Responsibilites</label>
-                                <textarea name='responsibilites' className="textarea h-24 w-full" placeholder="Add each Responsibilites in a new line."></textarea>
+                                <textarea name='responsibilities' className="textarea h-24 w-full" placeholder="Add each Responsibilites in a new line."></textarea>
                             </fieldset>
                             {/* HR Name */}
                             <label className="label">HR Name</label>
-                            <input name='hrName' type="text" className="input w-full" placeholder="HR Name" />
+                            <input name='hr_name' type="text" className="input w-full" placeholder="HR Name" />
                             {/* HR Email */}
                             <label className="label">HR Email</label>
-                            <input defaultValue={user?.email} name='hrEmail' type="text" className="input w-full" placeholder="HR Email" />
+                            <input defaultValue={user?.email} name='hr_email' type="text" className="input w-full" placeholder="HR Email" />
                             {/* Company Logo URL */}
                             <label className="label">Company Logo URL</label>
-                            <input name='logo_url' type="url" className="input w-full" placeholder="Company Logo URL" />
+                            <input name='company_logo' type="url" className="input w-full" placeholder="Company Logo URL" />
                             {/*Application Deadline */}
                             <label className="label">Application deadline</label>
-                            <input name='deadline' type="date" className="input w-full" placeholder="Deadline" />
+                            <input name='applicationDeadline' type="date" className="input w-full" placeholder="Deadline" />
                             {/* Submit button */}
                             <button className="btn btn-neutral mt-4">Submit</button>
                         </fieldset>
