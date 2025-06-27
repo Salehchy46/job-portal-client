@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
 
 const MyApplications = () => {
 
@@ -7,9 +8,13 @@ const MyApplications = () => {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/job-application?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setJobs(data))
+
+        // fetch(`http://localhost:3000/job-application?email=${user.email}`)
+        //     .then(res => res.json())
+        //     .then(data => setJobs(data))
+
+        axios.get(`http://localhost:3000/job-application?email=${user.email}`, { withCredentials: true })
+            .then(res => setJobs(res.data))
     }, [user.email])
 
     const deleteJobApplication = (id) => {
@@ -47,7 +52,7 @@ const MyApplications = () => {
                 </div>
             </div>
             <h2 className="text-3xl font-bold text-center my-10">My Applications: {jobs.length}</h2>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto mb-10">
                 <table className="table">
                     {/* head */}
                     <thead>
