@@ -33,12 +33,26 @@ const AuthProvider = ({ children }) => {
             if(currentUser?.email){
                 const user = {email : currentUser.email}
 
-                axios.post('http://localhost:3000/jwt', user)
-                .then(res => console.log(res.data))
+                axios.post('http://localhost:3000/jwt', user, {
+                    withCredentials: true,
+                })
+                .then(res => {
+                    console.log('log in token', res.data)
+                    setLoading(false);
+                })
+            }
+            else{
+                axios.post('http://localhost:3000/logout', {}, {
+                    withCredentials: true,
+                })
+                .then(res => {
+                    console.log('logout', res.data)
+                    setLoading(false)
+                })
             }
             
             //put it in the right place
-            setLoading(false);
+            
         })
 
         return () => {
