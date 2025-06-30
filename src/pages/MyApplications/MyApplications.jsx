@@ -1,21 +1,33 @@
 import { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import axios from 'axios';
+import useAxios from '../../hooks/useAxios';
 
 const MyApplications = () => {
 
     const { user } = useAuth();
     const [jobs, setJobs] = useState([]);
 
+    const axiosSecure = useAxios();
+
     useEffect(() => {
+
+        //beginner
 
         // fetch(`http://localhost:3000/job-application?email=${user.email}`)
         //     .then(res => res.json())
         //     .then(data => setJobs(data))
 
-        axios.get(`http://localhost:3000/job-application?email=${user.email}`, { withCredentials: true })
-            .then(res => setJobs(res.data))
-    }, [user.email])
+        //fokira axios
+
+        // axios.get(`http://localhost:3000/job-application?email=${user.email}`, { withCredentials: true })
+        //     .then(res => setJobs(res.data))
+
+        //advance and short axios
+
+        axiosSecure.get(`/job-application?email=${user.email}`)
+        .then(res => setJobs(res.data))
+
+    }, [user.email, axiosSecure])
 
     const deleteJobApplication = (id) => {
         fetch(`http://localhost:3000/job-application/${id}?email=${user.email}`, {
