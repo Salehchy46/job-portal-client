@@ -13,13 +13,13 @@ const MyApplications = () => {
 
         //beginner
 
-        // fetch(`http://localhost:3000/job-application?email=${user.email}`)
+        // fetch(`https://job-portal-server-ten-nu.vercel.app/job-application?email=${user.email}`)
         //     .then(res => res.json())
         //     .then(data => setJobs(data))
 
         //fokira axios
 
-        // axios.get(`http://localhost:3000/job-application?email=${user.email}`, { withCredentials: true })
+        // axios.get(`https://job-portal-server-ten-nu.vercel.app/job-application?email=${user.email}`, { withCredentials: true })
         //     .then(res => setJobs(res.data))
 
         //advance and short axios
@@ -30,7 +30,7 @@ const MyApplications = () => {
     }, [user.email, axiosSecure])
 
     const deleteJobApplication = (id) => {
-        fetch(`http://localhost:3000/job-application/${id}?email=${user.email}`, {
+        fetch(`https://job-portal-server-ten-nu.vercel.app/job-application/${id}?email=${user.email}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
